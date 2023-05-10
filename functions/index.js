@@ -1,3 +1,14 @@
+// const functions = require("firebase-functions");
+
+// // Create and deploy your first functions
+// // https://firebase.google.com/docs/functions/get-started
+//
+// exports.helloWorld = functions.https.onRequest((request, response) => {
+//   functions.logger.info("Hello logs!", {structuredData: true});
+//   response.send("Hello from Firebase!");
+// });
+import * as functions from "firebase-functions"
+
 import bodyParser from "body-parser";
 import express from 'express';
 import Stripe from "stripe";
@@ -46,4 +57,4 @@ app.post('/create-payment-intent', async (req, res) => {
     }
 })
 
-app.listen(3000, () => console.log(`Node server listening on port 3000!`));
+export const stripePayment = functions.https.onRequest(app);
